@@ -29,6 +29,8 @@
 
 #endif
 
+#include "threading.h"
+
 ////////////////////////////////////////////////////
 //--Platform independent port definitions
 //  Nobody has a perfect memory, so these definitions
@@ -43,11 +45,15 @@
 #define JOYSTICK_AXIS    4
 #define JOYSTICK_BUTTONS 5
 
+#define SOCKET_COUNT 6
+
 typedef struct rcomm_socket_t{
 
     int sockfd;
     int port;
+    int client;
     sockaddr_in serv_addr;
+    rthread_t thread;
 
 };
 
