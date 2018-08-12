@@ -30,6 +30,7 @@
 #endif
 
 #include "threading.h"
+#include "rcomm_socket.h"
 
 ////////////////////////////////////////////////////
 //--Platform independent port definitions
@@ -45,22 +46,9 @@
 #define JOYSTICK_AXIS    4
 #define JOYSTICK_BUTTONS 5
 
-#define SOCKET_COUNT 6
-
-typedef struct rcomm_socket_t{
-
-    int sockfd;
-    int port;
-    int client;
-    sockaddr_in serv_addr;
-    rthread_t thread;
-
-};
-
 int rcomm_init(void);
 int rcomm_quit(void);
 
-rcomm_socket_t rcomm_open(int domain, int type, int protocol);
 int rcomm_shutdown(SOCKET socket);
 
 #endif
